@@ -1,0 +1,21 @@
+# Environment
+.env
+.env.local
+
+# Dependencies
+node_modules
+
+# Build
+dist
+
+# OS
+.DS_Store
+
+# Server
+server/public
+
+# Vite
+vite.config.ts.*
+
+# Archives
+*.tar.gz

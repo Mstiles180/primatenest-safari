@@ -1,0 +1,83 @@
+import { Link } from "wouter";
+import { Hotel, Facebook, Instagram, Twitter, MapPin, Phone, Mail } from "lucide-react";
+
+export function Footer() {
+  return (
+    <footer className="bg-primary text-white pt-20 pb-10">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          <div className="space-y-6">
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="p-2 bg-white/10 rounded-lg group-hover:bg-white/20 transition-colors">
+                <Hotel className="h-6 w-6 text-secondary" />
+              </div>
+              <span className="font-display font-bold text-2xl tracking-tight">
+                Serenity<span className="text-secondary">Lodge</span>
+              </span>
+            </Link>
+            <p className="text-white/70 leading-relaxed">
+              Experience the perfect blend of nature and luxury. Your sanctuary away from the hustle of everyday life.
+            </p>
+            <div className="flex gap-4">
+              <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-secondary hover:text-primary transition-all">
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-secondary hover:text-primary transition-all">
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-secondary hover:text-primary transition-all">
+                <Twitter className="h-5 w-5" />
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-display font-bold text-xl mb-6 text-secondary">Quick Links</h4>
+            <ul className="space-y-4">
+              <li><Link href="/" className="text-white/70 hover:text-white transition-colors">Home</Link></li>
+              <li><Link href="/rooms" className="text-white/70 hover:text-white transition-colors">Our Rooms</Link></li>
+              <li><Link href="/about" className="text-white/70 hover:text-white transition-colors">About Us</Link></li>
+              <li><Link href="/contact" className="text-white/70 hover:text-white transition-colors">Contact</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-display font-bold text-xl mb-6 text-secondary">Our Services</h4>
+            <ul className="space-y-4">
+              <li className="text-white/70">Fine Dining Restaurant</li>
+              <li className="text-white/70">Spa & Wellness Center</li>
+              <li className="text-white/70">Conference Halls</li>
+              <li className="text-white/70">Private Tours</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-display font-bold text-xl mb-6 text-secondary">Contact Us</h4>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3 text-white/70">
+                <MapPin className="h-5 w-5 text-secondary shrink-0 mt-1" />
+                <span>123 Forest Glade Road,<br />Mountain View, CA 94043</span>
+              </li>
+              <li className="flex items-center gap-3 text-white/70">
+                <Phone className="h-5 w-5 text-secondary shrink-0" />
+                <span>+1 (555) 123-4567</span>
+              </li>
+              <li className="flex items-center gap-3 text-white/70">
+                <Mail className="h-5 w-5 text-secondary shrink-0" />
+                <span>bookings@serenitylodge.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/50">
+          <p>&copy; {new Date().getFullYear()} SerenityLodge. All rights reserved.</p>
+          <div className="flex gap-6">
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
