@@ -12,11 +12,11 @@ export function Footer() {
                 <Hotel className="h-6 w-6 text-secondary" />
               </div>
               <span className="font-display font-bold text-2xl tracking-tight">
-                Serenity<span className="text-secondary">Lodge</span>
+                Primate Bed & <span className="text-secondary">Safaris</span>
               </span>
             </Link>
             <p className="text-white/70 leading-relaxed">
-              Experience the perfect blend of nature and luxury. Your sanctuary away from the hustle of everyday life.
+              Your gateway to Rwanda's wonders. Experience comfort, affordability, and adventure in the heart of Kinigi.
             </p>
             <div className="flex gap-4">
               <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-secondary hover:text-primary transition-all">
@@ -44,10 +44,10 @@ export function Footer() {
           <div>
             <h4 className="font-display font-bold text-xl mb-6 text-secondary">Our Services</h4>
             <ul className="space-y-4">
-              <li className="text-white/70">Fine Dining Restaurant</li>
-              <li className="text-white/70">Spa & Wellness Center</li>
-              <li className="text-white/70">Conference Halls</li>
-              <li className="text-white/70">Private Tours</li>
+              <li className="text-white/70">Gorilla Trekking Safaris</li>
+              <li className="text-white/70">VIP Vehicle Transport</li>
+              <li className="text-white/70">4x4 Safari Tours</li>
+              <li className="text-white/70">Guided Rwanda Tours</li>
             </ul>
           </div>
 
@@ -56,22 +56,22 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-white/70">
                 <MapPin className="h-5 w-5 text-secondary shrink-0 mt-1" />
-                <span>123 Forest Glade Road,<br />Mountain View, CA 94043</span>
+                <span>Kinigi, Rwanda<br />3km from Volcanoes National Park</span>
               </li>
               <li className="flex items-center gap-3 text-white/70">
                 <Phone className="h-5 w-5 text-secondary shrink-0" />
-                <span>+1 (555) 123-4567</span>
+                <span>+250 788 123 456</span>
               </li>
               <li className="flex items-center gap-3 text-white/70">
                 <Mail className="h-5 w-5 text-secondary shrink-0" />
-                <span>bookings@serenitylodge.com</span>
+                <span>info@primatebedandsafaris.com</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/50">
-          <p>&copy; {new Date().getFullYear()} SerenityLodge. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Primate Bed & Safaris. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
