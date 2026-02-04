@@ -19,6 +19,8 @@ export function Navigation() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/rooms", label: "Our Rooms" },
+    { href: "/gallery", label: "Gallery" },
+    { href: "/vehicles", label: "Vehicles" },
     { href: "/about", label: "About Us" },
     { href: "/contact", label: "Contact" },
   ];
@@ -39,7 +41,7 @@ export function Navigation() {
             className={`font-display font-bold text-2xl tracking-tight transition-colors ${isScrolled ? "text-primary" : "text-white"
               }`}
           >
-            Primate Bed & <span className="text-secondary">Safaris</span>
+            Primate Nest & <span className="text-secondary">Safari</span>
           </span>
         </Link>
 
@@ -80,7 +82,7 @@ export function Navigation() {
           <SheetContent side="right" className="bg-primary border-none text-white w-[300px]">
             <div className="flex flex-col gap-8 mt-12">
               <Link href="/" className="text-2xl font-display font-bold text-secondary">
-                Primate Bed & Safaris
+                Primate Nest & Safari
               </Link>
               <div className="flex flex-col gap-4">
                 {navLinks.map((link) => (

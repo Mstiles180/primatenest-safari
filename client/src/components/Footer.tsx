@@ -12,7 +12,7 @@ export function Footer() {
                 <Hotel className="h-6 w-6 text-secondary" />
               </div>
               <span className="font-display font-bold text-2xl tracking-tight">
-                Primate Bed & <span className="text-secondary">Safaris</span>
+                Primate Nest & <span className="text-secondary">Safari</span>
               </span>
             </Link>
             <p className="text-white/70 leading-relaxed">
@@ -71,7 +71,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/50">
-          <p>&copy; {new Date().getFullYear()} Primate Bed & Safaris. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Primate Nest & Safari. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>

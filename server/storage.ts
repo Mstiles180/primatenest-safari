@@ -14,6 +14,7 @@ export interface IStorage {
   getRoom(id: number): Promise<Room | undefined>;
   createBooking(booking: InsertBooking): Promise<Booking>;
   createRoom(room: InsertRoom): Promise<Room>; // Helper for seeding
+  updateRoom(id: number, room: Partial<InsertRoom>): Promise<Room | undefined>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -34,6 +35,15 @@ export class DatabaseStorage implements IStorage {
   async createRoom(insertRoom: InsertRoom): Promise<Room> {
     const [room] = await db.insert(rooms).values(insertRoom).returning();
     return room;
+  }
+
+  async updateRoom(id: number, roomUpdate: Partial<InsertRoom>): Promise<Room | undefined> {
+    const [updatedRoom] = await db
+      .update(rooms)
+      .set(roomUpdate)
+      .where(eq(rooms.id, id))
+      .returning();
+    return updatedRoom;
   }
 }
 

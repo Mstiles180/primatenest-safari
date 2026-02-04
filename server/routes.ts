@@ -8,7 +8,7 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
-  
+
   app.get(api.rooms.list.path, async (req, res) => {
     const rooms = await storage.getRooms();
     res.json(rooms);
@@ -27,9 +27,9 @@ export async function registerRoutes(
       const input = api.bookings.create.input.parse(req.body);
       // Basic validation: ensure check-out is after check-in
       if (new Date(input.checkOut) <= new Date(input.checkIn)) {
-         return res.status(400).json({ message: "Check-out must be after check-in" });
+        return res.status(400).json({ message: "Check-out must be after check-in" });
       }
-      
+
       const booking = await storage.createBooking(input);
       res.status(201).json(booking);
     } catch (err) {
@@ -50,6 +50,27 @@ export async function registerRoutes(
 
 export async function seedDatabase() {
   const existingRooms = await storage.getRooms();
+
+  // Update existing rooms if they have old amenities
+  if (existingRooms.length > 0) {
+    for (const room of existingRooms) {
+      if (room.amenities) {
+        let changed = false;
+        const newAmenities = room.amenities.map(a => {
+          if (["Garden View", "City View", "Single Bed"].includes(a)) {
+            changed = true;
+            return "Hot Shower";
+          }
+          return a;
+        });
+
+        if (changed) {
+          await storage.updateRoom(room.id, { amenities: [...new Set(newAmenities)] });
+        }
+      }
+    }
+  }
+
   if (existingRooms.length === 0) {
     await storage.createRoom({
       name: "Deluxe Garden Suite",
@@ -58,9 +79,9 @@ export async function seedDatabase() {
       capacity: 2,
       imageUrl: "https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&q=80&w=1000",
       type: "suite",
-      amenities: ["WiFi", "Garden View", "King Bed", "Breakfast Included"]
+      amenities: ["WiFi", "Hot Shower", "King Bed", "Breakfast Included"]
     });
-    
+
     await storage.createRoom({
       name: "Cozy Double Room",
       description: "Perfect for couples, featuring a comfortable queen bed and city views.",
@@ -68,7 +89,7 @@ export async function seedDatabase() {
       capacity: 2,
       imageUrl: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=1000",
       type: "double",
-      amenities: ["WiFi", "City View", "Queen Bed"]
+      amenities: ["WiFi", "Hot Shower", "Queen Bed"]
     });
 
     await storage.createRoom({
@@ -78,9 +99,9 @@ export async function seedDatabase() {
       capacity: 1,
       imageUrl: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=1000",
       type: "single",
-      amenities: ["WiFi", "Single Bed", "Work Desk"]
+      amenities: ["WiFi", "Hot Shower", "Work Desk"]
     });
-    
+
     await storage.createRoom({
       name: "Family Suite",
       description: "Spacious accommodation for the whole family with two bedrooms and a living area.",

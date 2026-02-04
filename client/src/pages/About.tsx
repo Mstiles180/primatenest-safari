@@ -8,9 +8,9 @@ export default function About() {
 
       <div className="pt-32 pb-20 bg-primary text-white text-center px-4 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')]"></div>
-        <h1 className="font-display text-4xl md:text-6xl font-bold mb-6 relative z-10">About Primate Bed & Safaris</h1>
+        <h1 className="font-display text-4xl md:text-6xl font-bold mb-6 relative z-10">About Primate Nest & Safari</h1>
         <p className="text-white/70 max-w-2xl mx-auto text-lg leading-relaxed relative z-10">
-          Primate Bed and Safaris welcomes you to Kinigi, the home of the world's endangered mountain gorillas. Located just 3 kilometers from Volcanoes National Park headquarters.
+          Primate Nest and Safari welcomes you to Kinigi, the home of the world's endangered mountain gorillas. Located just 3 kilometers from Volcanoes National Park headquarters.
         </p>
       </div>
 
@@ -49,7 +49,7 @@ export default function About() {
             <div className="order-1 md:order-2">
               <h2 className="font-display text-3xl font-bold text-primary mb-6">Adventure Awaits</h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Beyond accommodation, Primate Bed and Safaris is your trusted partner for unforgettable adventures. We provide VIP vehicles for those seeking extra comfort, as well as specialized safari 4x4 vehicles designed to take you across Rwanda's breathtaking landscapes.
+                Beyond accommodation, Primate Nest and Safari is your trusted partner for unforgettable adventures. We provide VIP vehicles for those seeking extra comfort, as well as specialized safari 4x4 vehicles designed to take you across Rwanda's breathtaking landscapes.
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 From gorilla trekking in Volcanoes National Park to exploring Rwanda's lakes, savannahs, and cultural treasures, our guided safaris promise authentic and memorable experiences.
