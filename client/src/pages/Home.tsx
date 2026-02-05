@@ -17,13 +17,8 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
         {/* Scenic mountain landscape background */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary/40 z-10 mix-blend-multiply" />
-          <img
-            src="https://pixabay.com/get/g83056f38cf8f24ed2013a178cb813e99d7be93fc3b4d15c63e5c02ff5b0cd53ebfcaf690ea233c2cf0e639a9f063e986429302cd23acdbda77fce5d109d8ee32_1280.jpg"
-            alt="Mountain Lodge Landscape"
-            className="w-full h-full object-cover"
-          />
+        <div className="absolute inset-0 z-0 bg-primary/30">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/60 z-10" />
         </div>
 
         <div className="container mx-auto px-4 z-20 pt-20">

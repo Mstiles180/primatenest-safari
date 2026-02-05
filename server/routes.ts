@@ -51,9 +51,29 @@ export async function registerRoutes(
 export async function seedDatabase() {
   const existingRooms = await storage.getRooms();
 
-  // Update existing rooms if they have old amenities
+  // Defining image mapping for consistent updates
+  const roomImages: Record<string, string> = {
+    "Deluxe Garden Suite": "/images/room1.jpg",
+    "Cozy Double Room": "/images/room2.jpg",
+    "Standard Single": "/images/room3.jpg",
+    "Family Suite": "/images/room4.jpg",
+    "Safari Luxury Tent": "/images/room5.jpg",
+    "Treehouse Experience": "/images/room6.jpg"
+  };
+
+  // Update existing rooms if they have old amenities or old images
   if (existingRooms.length > 0) {
     for (const room of existingRooms) {
+      const updates: Partial<typeof room> = {};
+
+      // Update image if defined in mapping and currently different
+      if (roomImages[room.name] && room.imageUrl !== roomImages[room.name]) {
+        updates.imageUrl = roomImages[room.name];
+      } else if (!roomImages[room.name] && room.imageUrl === "/images/room_updated.jpg") {
+        // Fallback for unknown rooms if they were set to the previous single image
+        updates.imageUrl = "/images/room1.jpg";
+      }
+
       if (room.amenities) {
         let changed = false;
         const newAmenities = room.amenities.map(a => {
@@ -65,51 +85,81 @@ export async function seedDatabase() {
         });
 
         if (changed) {
-          await storage.updateRoom(room.id, { amenities: [...new Set(newAmenities)] });
+          updates.amenities = Array.from(new Set(newAmenities));
         }
+      }
+
+      if (Object.keys(updates).length > 0) {
+        await storage.updateRoom(room.id, updates);
       }
     }
   }
 
-  if (existingRooms.length === 0) {
-    await storage.createRoom({
-      name: "Deluxe Garden Suite",
-      description: "A spacious suite with a private garden view, king-sized bed, and modern amenities.",
-      price: 15000, // $150.00
-      capacity: 2,
-      imageUrl: "https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&q=80&w=1000",
-      type: "suite",
-      amenities: ["WiFi", "Hot Shower", "King Bed", "Breakfast Included"]
-    });
+  // Ensure all base rooms exist
+  const ensureRoom = async (name: string, description: string, price: number, capacity: number, imageUrl: string, type: string, amenities: string[]) => {
+    const exists = existingRooms.find(r => r.name === name);
+    if (!exists) {
+      await storage.createRoom({ name, description, price, capacity, imageUrl, type, amenities });
+    }
+  };
 
-    await storage.createRoom({
-      name: "Cozy Double Room",
-      description: "Perfect for couples, featuring a comfortable queen bed and city views.",
-      price: 9500, // $95.00
-      capacity: 2,
-      imageUrl: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=1000",
-      type: "double",
-      amenities: ["WiFi", "Hot Shower", "Queen Bed"]
-    });
+  await ensureRoom(
+    "Deluxe Garden Suite",
+    "A spacious suite with a private garden view, king-sized bed, and modern amenities.",
+    15000,
+    2,
+    "/images/room1.jpg",
+    "suite",
+    ["WiFi", "Hot Shower", "King Bed", "Breakfast Included"]
+  );
 
-    await storage.createRoom({
-      name: "Standard Single",
-      description: "Ideal for solo travelers, offering a cozy atmosphere and essential comforts.",
-      price: 6500, // $65.00
-      capacity: 1,
-      imageUrl: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=1000",
-      type: "single",
-      amenities: ["WiFi", "Hot Shower", "Work Desk"]
-    });
+  await ensureRoom(
+    "Cozy Double Room",
+    "Perfect for couples, featuring a comfortable queen bed and city views.",
+    9500,
+    2,
+    "/images/room2.jpg",
+    "double",
+    ["WiFi", "Hot Shower", "Queen Bed"]
+  );
 
-    await storage.createRoom({
-      name: "Family Suite",
-      description: "Spacious accommodation for the whole family with two bedrooms and a living area.",
-      price: 22000, // $220.00
-      capacity: 4,
-      imageUrl: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1000",
-      type: "suite",
-      amenities: ["WiFi", "2 Bedrooms", "Kitchenette", "Living Area"]
-    });
-  }
+  await ensureRoom(
+    "Standard Single",
+    "Ideal for solo travelers, offering a cozy atmosphere and essential comforts.",
+    6500,
+    1,
+    "/images/room3.jpg",
+    "single",
+    ["WiFi", "Hot Shower", "Work Desk"]
+  );
+
+  await ensureRoom(
+    "Family Suite",
+    "Spacious accommodation for the whole family with two bedrooms and a living area.",
+    22000,
+    4,
+    "/images/room4.jpg",
+    "suite",
+    ["WiFi", "2 Bedrooms", "Kitchenette", "Living Area"]
+  );
+
+  await ensureRoom(
+    "Safari Luxury Tent",
+    "Experience the wild in comfort with our luxury tents featuring en-suite bathrooms.",
+    18000,
+    2,
+    "/images/room5.jpg",
+    "luxury",
+    ["WiFi", "En-suite Bathroom", "Private Deck", "Nature View"]
+  );
+
+  await ensureRoom(
+    "Treehouse Experience",
+    "Elevated living amidst the canopy, offering a unique perspective of the surroundings.",
+    25000,
+    2,
+    "/images/room6.jpg",
+    "unique",
+    ["WiFi", "Panoramic View", "Mini Bar", "Stargazing Deck"]
+  );
 }

@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Hotel, Facebook, Instagram, Twitter, MapPin, Phone, Mail } from "lucide-react";
+import { Facebook, Instagram, Twitter, MapPin, Phone, Mail } from "lucide-react";
 
 export function Footer() {
   return (
@@ -7,11 +7,13 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="p-2 bg-white/10 rounded-lg group-hover:bg-white/20 transition-colors">
-                <Hotel className="h-6 w-6 text-secondary" />
-              </div>
-              <span className="font-display font-bold text-2xl tracking-tight">
+            <Link href="/" className="flex items-center gap-3 group mb-4 block">
+              <img
+                src="/images/logo.png"
+                alt="Primate Nest & Safari"
+                className="h-24 w-auto object-contain brightness-0 invert"
+              />
+              <span className="font-display font-bold text-2xl tracking-tight text-white">
                 Primate Nest & <span className="text-secondary">Safari</span>
               </span>
             </Link>

@@ -12,18 +12,34 @@ import Vehicles from "@/pages/Vehicles";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 
+import { useEffect } from "react";
+import { useLocation } from "wouter";
+
+function ScrollToTop() {
+  const [pathname] = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function Router() {
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/rooms" component={Rooms} />
-      <Route path="/rooms/:id" component={RoomDetail} />
-      <Route path="/gallery" component={Gallery} />
-      <Route path="/vehicles" component={Vehicles} />
-      <Route path="/about" component={About} />
-      <Route path="/contact" component={Contact} />
-      <Route component={NotFound} />
-    </Switch>
+    <>
+      <ScrollToTop />
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/rooms" component={Rooms} />
+        <Route path="/rooms/:id" component={RoomDetail} />
+        <Route path="/gallery" component={Gallery} />
+        <Route path="/vehicles" component={Vehicles} />
+        <Route path="/about" component={About} />
+        <Route path="/contact" component={Contact} />
+        <Route component={NotFound} />
+      </Switch>
+    </>
   );
 }
 

@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Menu, X, Hotel } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -33,10 +33,12 @@ export function Navigation() {
         }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className={`p-2 rounded-lg transition-colors ${isScrolled ? "bg-primary text-secondary" : "bg-white text-primary"}`}>
-            <Hotel className="h-6 w-6" />
-          </div>
+        <Link href="/" className="flex items-center gap-3 group">
+          <img
+            src="/images/logo.png"
+            alt="Primate Nest & Safari"
+            className="h-20 w-auto object-contain"
+          />
           <span
             className={`font-display font-bold text-2xl tracking-tight transition-colors ${isScrolled ? "text-primary" : "text-white"
               }`}

@@ -9,7 +9,7 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       <div className="pt-32 pb-16 bg-primary text-white text-center px-4">
         <h1 className="font-display text-4xl md:text-5xl font-bold mb-6">Get in Touch</h1>
         <p className="text-white/70 max-w-xl mx-auto text-lg">
@@ -19,7 +19,7 @@ export default function Contact() {
 
       <div className="container mx-auto px-4 py-20">
         <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
-          
+
           {/* Contact Info */}
           <div className="space-y-12">
             <div>
@@ -27,7 +27,7 @@ export default function Contact() {
               <p className="text-muted-foreground text-lg mb-8">
                 Our team is available 24/7 to assist with reservations and inquiries.
               </p>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="bg-primary/10 p-3 rounded-full text-primary">
@@ -35,7 +35,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-bold text-primary text-lg">Location</h3>
-                    <p className="text-muted-foreground">123 Forest Glade Road<br />Mountain View, CA 94043</p>
+                    <p className="text-muted-foreground">Kinigi, Rwanda<br />3km from Volcanoes National Park</p>
                   </div>
                 </div>
 
@@ -45,7 +45,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-bold text-primary text-lg">Phone</h3>
-                    <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                    <p className="text-muted-foreground">+250 788 123 456</p>
                   </div>
                 </div>
 
@@ -55,7 +55,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-bold text-primary text-lg">Email</h3>
-                    <p className="text-muted-foreground">bookings@serenitylodge.com</p>
+                    <p className="text-muted-foreground">info@primatebedandsafaris.com</p>
                   </div>
                 </div>
               </div>
@@ -63,11 +63,16 @@ export default function Contact() {
 
             <div className="h-64 bg-muted rounded-2xl overflow-hidden border border-border">
               {/* Placeholder for Map - using an image for now */}
-              <img 
-                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2074&auto=format&fit=crop" 
-                alt="Map Location" 
-                className="w-full h-full object-cover opacity-80"
-              />
+              <iframe
+                src="https://maps.google.com/maps?q=-1.447025,29.589983&hl=en&z=15&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Google Map Location"
+              ></iframe>
             </div>
           </div>
 
@@ -85,7 +90,7 @@ export default function Contact() {
                   <Input placeholder="Doe" className="h-12 rounded-xl bg-muted/30" />
                 </div>
               </div>
-              
+
               <div className="space-y-2">
                 <label className="text-sm font-medium text-primary">Email</label>
                 <Input type="email" placeholder="jane@example.com" className="h-12 rounded-xl bg-muted/30" />
