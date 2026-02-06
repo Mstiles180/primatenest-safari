@@ -104,6 +104,27 @@ const galleryImages = [
         description: "Wake up to the mountains",
         image: "/images/room3.jpg",
     },
+    {
+        id: 15,
+        category: "Accommodations",
+        title: "Family Suite",
+        description: "Spacious accommodation for the whole family",
+        image: "/images/room4.jpg",
+    },
+    {
+        id: 16,
+        category: "Accommodations",
+        title: "Safari Luxury Tent",
+        description: "Experience the wild in comfort",
+        image: "/images/room5.jpg",
+    },
+    {
+        id: 17,
+        category: "Accommodations",
+        title: "Treehouse Experience",
+        description: "Unique elevated living amidst the canopy",
+        image: "/images/room6.jpg",
+    },
 ];
 
 import { useState, useMemo } from "react";
